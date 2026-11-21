@@ -60,6 +60,14 @@ body{background-size:100% 100%,100% 100%,auto}
 .icon .sabanta-app-mark{width:100%;height:100%;display:block;object-fit:cover;object-position:50% 23%;border-radius:10px;filter:grayscale(1) sepia(1) saturate(2.5) hue-rotate(355deg) brightness(1.18) contrast(1.12);animation:appMarkGlow 4s ease-in-out infinite}
 @keyframes appMarkGlow{0%,100%{filter:grayscale(1) sepia(1) saturate(2.2) hue-rotate(355deg) brightness(1.02) contrast(1.1)}50%{filter:grayscale(1) sepia(1) saturate(2.8) hue-rotate(355deg) brightness(1.28) contrast(1.16)}}
 @media(prefers-reduced-motion:reduce){.icon .sabanta-app-mark{animation:none}}
+
+/* Mobile touch feedback and accessible focus states */
+.link,.edit-toggle,.save-edit,.add-link,.photo-picker,.close-editor,.reset-edit,.remove-row{ -webkit-tap-highlight-color:transparent;touch-action:manipulation}
+.link:active{transform:scale(.985);border-color:rgba(245,223,170,.82);background:linear-gradient(110deg,rgba(217,181,109,.14),rgba(255,255,255,.035));box-shadow:0 5px 18px rgba(0,0,0,.3),0 0 18px rgba(217,181,109,.12)}
+.link:active .icon{transform:scale(.94);box-shadow:0 0 18px rgba(217,181,109,.25),inset 0 0 14px rgba(217,181,109,.14)}
+.edit-toggle:active,.save-edit:active,.add-link:active,.photo-picker:active,.close-editor:active,.reset-edit:active,.remove-row:active{transform:scale(.97);filter:brightness(1.2)}
+a:focus-visible,button:focus-visible,input:focus-visible{outline:2px solid rgba(245,223,170,.9);outline-offset:4px;box-shadow:0 0 0 5px rgba(217,181,109,.12)}
+@media(hover:none){.link:hover{transform:none}.link:hover .icon{transform:none}.link:active{transition:transform .12s ease,box-shadow .12s ease,background .12s ease}}
 </style></head>
 <body><div class="noise"></div><div class="stars" aria-hidden="true"></div><main class="wrap">
 <div class="top"><span>PERSONAL DIGITAL SPACE</span><span class="status"><i class="dot"></i> OFFICIAL PAGE</span></div>
