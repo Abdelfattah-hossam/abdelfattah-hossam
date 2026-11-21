@@ -54,6 +54,12 @@ body{background-size:100% 100%,100% 100%,auto}
 .footer b{animation:goldBreath 4s ease-in-out infinite}
 @keyframes goldBreath{0%,100%{text-shadow:0 0 0 transparent}50%{text-shadow:0 0 12px rgba(217,181,109,.55)}}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important;transition-duration:.01ms!important}}
+
+/* Original SABANTA crest inside its app tiles */
+.icon:has(.sabanta-app-mark){overflow:hidden;padding:3px;background:linear-gradient(145deg,#17140e,#030303);border-color:rgba(217,181,109,.72)}
+.icon .sabanta-app-mark{width:100%;height:100%;display:block;object-fit:cover;object-position:50% 23%;border-radius:10px;filter:grayscale(1) sepia(1) saturate(2.5) hue-rotate(355deg) brightness(1.18) contrast(1.12);animation:appMarkGlow 4s ease-in-out infinite}
+@keyframes appMarkGlow{0%,100%{filter:grayscale(1) sepia(1) saturate(2.2) hue-rotate(355deg) brightness(1.02) contrast(1.1)}50%{filter:grayscale(1) sepia(1) saturate(2.8) hue-rotate(355deg) brightness(1.28) contrast(1.16)}}
+@media(prefers-reduced-motion:reduce){.icon .sabanta-app-mark{animation:none}}
 </style></head>
 <body><div class="noise"></div><div class="stars" aria-hidden="true"></div><main class="wrap">
 <div class="top"><span>PERSONAL DIGITAL SPACE</span><span class="status"><i class="dot"></i> OFFICIAL PAGE</span></div>
@@ -99,11 +105,12 @@ try { const saved=JSON.parse(localStorage.getItem('abdOfficialPage')); if(saved)
  const excludedLink = l => /al\s*omda|العمدة|tiktok|github/i.test(l.title||'');
  data.links=(data.links||[]).filter(l=>!excludedLink(l));
 function safeUrl(url){try{const u=new URL(url);return ['http:','https:'].includes(u.protocol)?u.href:''}catch(e){return ''}}
+const sabantaLogoSrc=$('heroPhoto')?.getAttribute('src')||'';
 function appLogo(title,url){
  const t=(title||'').toLowerCase(),u=(url||'').toLowerCase();
  if(t.includes('instagram')||u.includes('instagram')) return '<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.2" y="3.2" width="17.6" height="17.6" rx="5.2" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="4.1" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="17.7" cy="6.5" r="1.25" fill="currentColor"/></svg>';
  if(t.includes('facebook')||u.includes('facebook')) return '<svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M13.55 21v-8.2h2.76l.42-3.2h-3.18V7.56c0-.93.26-1.57 1.6-1.57h1.7V3.12C16.02 3.04 15.1 3 14.03 3c-2.83 0-4.77 1.73-4.77 4.9v1.7H6.4v3.2h2.86V21z"/></svg>';
- return '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5 20.5 6v5.3c0 5-3.4 8.2-8.5 10.2-5.1-2-8.5-5.2-8.5-10.2V6z" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M8 15.7V8.3h2l4 4.4V8.3H16v7.4h-2l-4-4.4v4.4z" fill="currentColor"/></svg>';
+ return '<img class="sabanta-app-mark" src="'+sabantaLogoSrc+'" alt="SABANTA" />';
 }
 function render(){
  $('displayName').textContent=data.name; $('displayBio').textContent=data.bio;
