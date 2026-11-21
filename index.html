@@ -68,6 +68,16 @@ body{background-size:100% 100%,100% 100%,auto}
 .edit-toggle:active,.save-edit:active,.add-link:active,.photo-picker:active,.close-editor:active,.reset-edit:active,.remove-row:active{transform:scale(.97);filter:brightness(1.2)}
 a:focus-visible,button:focus-visible,input:focus-visible{outline:2px solid rgba(245,223,170,.9);outline-offset:4px;box-shadow:0 0 0 5px rgba(217,181,109,.12)}
 @media(hover:none){.link:hover{transform:none}.link:hover .icon{transform:none}.link:active{transition:transform .12s ease,box-shadow .12s ease,background .12s ease}}
+
+/* Final polish: layered star sparkle and soft gold breathing light */
+.stars:before{animation:starLayerA 28s linear infinite,starPulseA 5.6s ease-in-out infinite alternate}
+.stars:after{animation:starLayerB 36s linear infinite,starPulseB 7.2s ease-in-out infinite alternate}
+@keyframes starPulseA{from{opacity:.18;filter:brightness(.75)}to{opacity:.52;filter:brightness(1.45)}}
+@keyframes starPulseB{from{opacity:.12;filter:brightness(.8)}to{opacity:.4;filter:brightness(1.55)}}
+.hero-photo{animation:heroGoldBreath 5.5s ease-in-out infinite}
+@keyframes heroGoldBreath{0%,100%{box-shadow:0 14px 38px rgba(0,0,0,.48),0 0 18px rgba(217,181,109,.08)}50%{box-shadow:0 14px 38px rgba(0,0,0,.48),0 0 32px rgba(217,181,109,.24)}}
+.link{will-change:transform}
+@media(prefers-reduced-motion:reduce){.stars:before,.stars:after,.hero-photo{animation:none!important}.link{will-change:auto}}
 </style></head>
 <body><div class="noise"></div><div class="stars" aria-hidden="true"></div><main class="wrap">
 <div class="top"><span>PERSONAL DIGITAL SPACE</span><span class="status"><i class="dot"></i> OFFICIAL PAGE</span></div>
