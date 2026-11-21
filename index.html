@@ -78,6 +78,23 @@ a:focus-visible,button:focus-visible,input:focus-visible{outline:2px solid rgba(
 @keyframes heroGoldBreath{0%,100%{box-shadow:0 14px 38px rgba(0,0,0,.48),0 0 18px rgba(217,181,109,.08)}50%{box-shadow:0 14px 38px rgba(0,0,0,.48),0 0 32px rgba(217,181,109,.24)}}
 .link{will-change:transform}
 @media(prefers-reduced-motion:reduce){.stars:before,.stars:after,.hero-photo{animation:none!important}.link{will-change:auto}}
+
+/* Mobile scroll performance: keep the look, remove expensive paint work */
+@media (max-width: 700px), (pointer: coarse) {
+  html { scroll-behavior: auto; }
+  .noise { display: none !important; }
+  .stars { animation: none !important; opacity: .42; }
+  .stars::before, .stars::after { animation: none !important; filter: none !important; }
+  .link, .editor { -webkit-backdrop-filter: none !important; backdrop-filter: none !important; }
+  .link { will-change: auto; }
+  .icon, .hero-photo { animation: none !important; }
+  .orb, .dot, .rule, .footer b { animation: none !important; }
+}
+@media (max-width: 700px) {
+  .link { transition: border-color .16s ease, background-color .16s ease; }
+  .link:active { transform: none; }
+  .link:active .icon { transform: none; }
+}
 </style></head>
 <body><div class="noise"></div><div class="stars" aria-hidden="true"></div><main class="wrap">
 <div class="top"><span>PERSONAL DIGITAL SPACE</span><span class="status"><i class="dot"></i> OFFICIAL PAGE</span></div>
