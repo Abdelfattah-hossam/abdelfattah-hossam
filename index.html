@@ -114,7 +114,7 @@ html{scroll-behavior:auto!important}
 <section class="links" id="publicLinks">
 <a class="link fade" href="https://munjizly.pages.dev/" target="_blank" rel="noopener"><span class="icon">✦</span><span class="meta"><strong>مُنجِزلي | Munjizly</strong><small>مساعد الذكاء الاصطناعي بالعربي: محادثة، ملفات ومشاريع</small></span><span class="arrow">←</span></a>
 <a class="link fade" href="https://kitab-sabanta.pages.dev/" target="_blank" rel="noopener"><span class="icon">▣</span><span class="meta"><strong>مكتبة السبنتي | SABANTA</strong><small>افتح تطبيق السبنتي عبر الويب</small></span><span class="arrow">←</span></a>
-<a class="link fade" href="https://abdelfattah-hossam-official.pages.dev/downloads/SABANTA-Android-v1.0.6.apk?v=1.0.6" target="_blank" rel="noopener"><span class="icon">↓</span><span class="meta"><strong>SABANTA v1.0.6 | تحميل التطبيق</strong><small>تحميل نسخة Android مباشرة · الإصدار 1.0.6</small></span><span class="arrow">←</span></a>
+<a class="link fade" href="https://abdelfattah-hossam-official.pages.dev/downloads/SABANTA-Android-v1.0.7.apk?v=1.0.7" target="_blank" rel="noopener"><span class="icon">↓</span><span class="meta"><strong>SABANTA v1.0.7 | تحميل التطبيق</strong><small>تحميل نسخة Android مباشرة · الإصدار 1.0.7</small></span><span class="arrow">←</span></a>
 <a class="link fade" href="https://www.facebook.com/share/1RNNQCGLgh/?mibextid=wwXIfr" target="_blank" rel="noopener"><span class="icon">f</span><span class="meta"><strong>Facebook | الحساب الشخصي</strong><small>حسابي الشخصي على فيسبوك</small></span><span class="arrow">←</span></a>
 <a class="link fade" href="https://www.facebook.com/share/19SmtiZeCs/?mibextid=wwXIfr" target="_blank" rel="noopener"><span class="icon">f</span><span class="meta"><strong>SABANTA | Facebook</strong><small>صفحة السبنتي على فيسبوك</small></span><span class="arrow">←</span></a>
 <a class="link fade" href="https://www.instagram.com/abd_el_fattah_hossam?evlk=NGxiMzd6M2Y0bDBl&amp;utm_source=qr" target="_blank" rel="noopener"><span class="icon">◎</span><span class="meta"><strong>Instagram | الحساب الشخصي</strong><small>تابعني على إنستجرام</small></span><span class="arrow">←</span></a>
@@ -142,7 +142,7 @@ html{scroll-behavior:auto!important}
 const defaults = [
  {title:'مُنجِزلي | Munjizly',desc:'مساعد الذكاء الاصطناعي بالعربي: محادثة، ملفات ومشاريع',url:'https://munjizly.pages.dev/'},
  {title:'مكتبة السبنتي | SABANTA',desc:'افتح تطبيق السبنتي عبر الويب',url:'https://kitab-sabanta.pages.dev/'},
- {title:'SABANTA v1.0.6 | تحميل التطبيق',desc:'تحميل نسخة Android مباشرة · الإصدار 1.0.6',url:'https://abdelfattah-hossam-official.pages.dev/downloads/SABANTA-Android-v1.0.6.apk?v=1.0.6'},
+ {title:'SABANTA v1.0.7 | تحميل التطبيق',desc:'تحميل نسخة Android مباشرة · الإصدار 1.0.7',url:'https://abdelfattah-hossam-official.pages.dev/downloads/SABANTA-Android-v1.0.7.apk?v=1.0.7'},
  {title:'Facebook | الحساب الشخصي',desc:'حسابي الشخصي على فيسبوك',url:'https://www.facebook.com/share/1RNNQCGLgh/?mibextid=wwXIfr'},
  {title:'SABANTA | Facebook',desc:'صفحة السبنتي على فيسبوك',url:'https://www.facebook.com/share/19SmtiZeCs/?mibextid=wwXIfr'},
  {title:'Instagram | الحساب الشخصي',desc:'تابعني على إنستجرام',url:'https://www.instagram.com/abd_el_fattah_hossam?evlk=NGxiMzd6M2Y0bDBl&utm_source=qr'},
@@ -214,7 +214,7 @@ function applyRemote(pd){
  if(!pd||typeof pd!=='object'||!Array.isArray(pd.links))return;
  data.name=(pd.name||data.name);data.bio=pd.bio||'';
  data.photo=(typeof pd.photo==='string'&&pd.photo.startsWith(SBU+'/storage/v1/object/public/book-covers/profile/'))?pd.photo:defaultPhoto;
- data.links=pd.links.filter(l=>l&&typeof l.t==='string'&&typeof l.u==='string').map(l=>{const fx=x=>String(x||'').replace(/1\.0\.5/g,'1.0.6');let u=fx(l.u);if(/SABANTA-Android-v1\.0\.6\.apk/.test(u)&&u.indexOf('?v=')<0)u+='?v=1.0.6';return {title:fx(l.t),desc:fx(l.d),url:u}});
+ data.links=pd.links.filter(l=>l&&typeof l.t==='string'&&typeof l.u==='string').map(l=>{const fx=x=>String(x||'').replace(/1\.0\.[0-6]\b/g,'1.0.7');let u=fx(l.u);if(/SABANTA-Android-v1\.0\.7\.apk/.test(u)&&u.indexOf('?v=')<0)u+='?v=1.0.7';return {title:fx(l.t),desc:fx(l.d),url:u}});
  render();
 }
 try{const c=JSON.parse(localStorage.getItem('abdRemotePage')||'null');if(c)applyRemote(c)}catch(e){}
