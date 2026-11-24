@@ -214,7 +214,7 @@ function applyRemote(pd){
  if(!pd||typeof pd!=='object'||!Array.isArray(pd.links))return;
  data.name=(pd.name||data.name);data.bio=pd.bio||'';
  data.photo=(typeof pd.photo==='string'&&pd.photo.startsWith(SBU+'/storage/v1/object/public/book-covers/profile/'))?pd.photo:defaultPhoto;
- data.links=pd.links.filter(l=>l&&typeof l.t==='string'&&typeof l.u==='string').map(l=>({title:l.t,desc:l.d||'',url:l.u}));
+ data.links=pd.links.filter(l=>l&&typeof l.t==='string'&&typeof l.u==='string').map(l=>{const fx=x=>String(x||'').replace(/1\.0\.5/g,'1.0.6');let u=fx(l.u);if(/SABANTA-Android-v1\.0\.6\.apk/.test(u)&&u.indexOf('?v=')<0)u+='?v=1.0.6';return {title:fx(l.t),desc:fx(l.d),url:u}});
  render();
 }
 try{const c=JSON.parse(localStorage.getItem('abdRemotePage')||'null');if(c)applyRemote(c)}catch(e){}
